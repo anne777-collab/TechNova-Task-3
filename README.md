@@ -1,89 +1,208 @@
-# TechNova
+# 🚀 TechNova - Task 3
 
-TechNova is a premium, static e-commerce UI foundation for a professional frontend internship project.
+A modern, responsive multi-page web application built using **HTML5, CSS3, and Vanilla JavaScript** as part of the internship program. This project extends the previous TechNova website by integrating real-world JavaScript functionality, including a live Weather Dashboard powered by the OpenWeather API and a fully functional Todo Manager with Local Storage support.
 
-## Overview
+---
 
-This project delivers a polished 4-page website for a smart electronics store:
+## 📌 Project Overview
 
-- `index.html`
-- `products.html`
-- `about.html`
-- `contact.html`
-- `weather.html`
+TechNova is a responsive technology website designed to demonstrate practical front-end development skills. In **Task 3**, the project focuses on implementing advanced JavaScript concepts such as API integration, Local Storage, DOM manipulation, modular JavaScript, and interactive UI components.
 
-The site is intentionally UI-only and uses only HTML5 and CSS3.
-Task 2 extends the UI with modular Vanilla JavaScript interactions.
+The application provides users with live weather information, a task management system, interactive product previews, and a clean responsive interface.
 
-## Folder Structure
+---
+
+## ✨ Features
+
+### 🌤️ Weather Dashboard
+
+* Search weather by city name
+* Live weather data using OpenWeather API
+* Current temperature
+* Feels like temperature
+* Humidity
+* Wind speed
+* Atmospheric pressure
+* Visibility
+* Sunrise & Sunset (city local time)
+* Weather description
+* Weather icon
+* Input validation
+* Responsive weather interface
+
+---
+
+### ✅ Todo Manager
+
+* Add new tasks
+* Mark tasks as completed
+* Edit existing tasks
+* Delete individual tasks
+* Search tasks instantly
+* Filter:
+
+  * All
+  * Active
+  * Completed
+* Mark all tasks as completed
+* Clear completed tasks
+* Automatic progress tracking
+* Data saved using Local Storage
+
+---
+
+### 🛍️ Product Experience
+
+* Interactive product cards
+* Product quick-view modal
+* Responsive product layout
+* Smooth animations
+
+---
+
+### 🎨 User Interface
+
+* Fully responsive layout
+* Dark & Light mode support
+* Mobile-first design
+* Smooth transitions
+* Modern card-based UI
+* Reusable JavaScript modules
+
+---
+
+## 🛠️ Technologies Used
+
+* HTML5
+* CSS3
+* Vanilla JavaScript (ES6 Modules)
+* OpenWeather API
+* Local Storage API
+
+---
+
+## 📂 Project Structure
 
 ```text
-technova/
-|-- index.html
-|-- products.html
-|-- about.html
-|-- contact.html
-|-- weather.html
-|-- css/
-|   |-- variables.css
-|   |-- style.css
-|   `-- responsive.css
-|-- js/
-|   |-- main.js
-|   |-- slider.js
-|   |-- modal.js
-|   |-- validation.js
-|   |-- theme.js
-|   |-- navigation.js
-|   `-- counter.js
-|-- images/
-`-- README.md
+TechNova/
+│
+├── css/
+│   ├── style.css
+│   ├── weather.css
+│   └── todo.css
+│
+├── images/
+│
+├── js/
+│   ├── main.js
+│   ├── weather.js
+│   ├── todo.js
+│   ├── storage.js
+│   ├── modal.js
+│   ├── navigation.js
+│   ├── slider.js
+│   ├── theme.js
+│   ├── validation.js
+│   ├── config.example.js
+│   └── config.js (ignored)
+│
+├── index.html
+├── about.html
+├── products.html
+├── weather.html
+├── todo.html
+├── contact.html
+└── README.md
 ```
 
-## Features
+---
 
-- Premium, responsive multi-page layout
-- Sticky header and reusable navigation
-- Hero section with strong visual hierarchy
-- Category cards, featured products, testimonials, and newsletter section
-- Product catalog with static search, filter, sort, and pagination UI
-- About page with story, mission, vision, values, stats, and team section
-- Contact page with form, map iframe, business details, hours, and social links
-- Weather page with premium city search, result card scaffold, recent searches, and responsive metric cards
-- Accessible semantic HTML and meaningful alt text
-- Mobile-first responsive design
-- CSS variables, grid, flexbox, hover states, and glassmorphism accents
-- Hamburger navigation for tablet and mobile
-- Persistent dark and light theme toggle
-- Home page hero slider with controls, dots, autoplay, hover pause, and swipe
-- Product quick view modal on the products page
-- Real-time contact form validation
-- About page animated counters
-- Back-to-top button, page loader, smooth scrolling, and toast notifications
+## 🔑 Weather API Setup
 
-## Tech Stack
+This project uses the **OpenWeather API**.
 
-- HTML5
-- CSS3
-- Vanilla JavaScript (ES6 modules)
+Create a file named:
 
-## Installation
+```text
+js/config.js
+```
 
-1. Open the `technova` folder in a browser or with a local development server.
-2. Start from `index.html`.
-3. Navigate through the pages using the header links.
+Add your API key:
 
-No build step and no JavaScript are required for Task 1.
+```javascript
+export const OPENWEATHER_API_KEY = "YOUR_API_KEY";
+```
 
-For the Weather page, set your OpenWeatherMap key before loading `js/weather.js`:
+An example configuration file is already included:
 
-- `window.TECHNOVA_OPENWEATHER_API_KEY = "your_api_key"`
-- or `localStorage.setItem("technova-openweather-api-key", "your_api_key")`
+```text
+js/config.example.js
+```
 
-## Future Scope
+---
 
-The HTML and CSS structure is prepared for later internship tasks:
+## ▶️ Running the Project
 
-- Task 3: API integration
+1. Clone the repository
 
-The current markup includes reusable classes and data attributes so future behavior can be added without major refactoring.
+```bash
+git clone <repository-url>
+```
+
+2. Open the project folder.
+
+3. Create:
+
+```text
+js/config.js
+```
+
+4. Add your OpenWeather API key.
+
+5. Launch the project using **Live Server** in VS Code.
+
+---
+
+## 📱 Responsive Design
+
+The application has been optimized for:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile Devices
+
+---
+
+## 🎯 Task 3 Objectives Completed
+
+* Responsive web pages
+* JavaScript modules
+* DOM manipulation
+* Event handling
+* Weather API integration
+* Local Storage implementation
+* Todo Manager
+* Product quick-view modal
+* Form validation
+* Interactive UI components
+* Modern responsive design
+
+---
+
+## 🔒 Security
+
+The OpenWeather API key is **not committed** to GitHub.
+
+* `config.js` is ignored using `.gitignore`
+* `config.example.js` is provided as a template for setup
+
+---
+
+## 👨‍💻 Author
+
+**Sahil**
+
+Internship Project – Task 3
+
+Built with ❤️ using HTML, CSS, and JavaScript.
