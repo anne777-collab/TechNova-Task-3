@@ -36,6 +36,8 @@
           <li><a class="nav__link" href="products.html">Products</a></li>
           <li><a class="nav__link" href="about.html">About</a></li>
           <li><a class="nav__link" href="contact.html">Contact</a></li>
+          <li><a class="nav__link" href="weather.html">Weather</a></li>
+          <li><a class="nav__link" href="todo.html">Tasks</a></li>
         </ul>
       </nav>
 
@@ -189,7 +191,7 @@
                 <span class="price">$999</span>
                 <span class="rating">4.9 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="laptops" data-product-id="aero-book-14">
@@ -202,7 +204,7 @@
                 <span class="price">$1,249</span>
                 <span class="rating">4.8 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="gaming" data-product-id="pixel-play-5">
@@ -215,7 +217,7 @@
                 <span class="price">$699</span>
                 <span class="rating">4.7 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="accessories" data-product-id="magkit-pro">
@@ -228,7 +230,7 @@
                 <span class="price">$129</span>
                 <span class="rating">4.8 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="smartwatches" data-product-id="pulse-watch-2">
@@ -241,7 +243,7 @@
                 <span class="price">$349</span>
                 <span class="rating">4.6 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="audio" data-product-id="sound-pods-max">
@@ -254,7 +256,7 @@
                 <span class="price">$199</span>
                 <span class="rating">4.9 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="smartphones" data-product-id="orbit-neo">
@@ -267,7 +269,7 @@
                 <span class="price">$799</span>
                 <span class="rating">4.7 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
           <article class="product-card" data-product-card data-product-category="laptops" data-product-id="studio-slate-16">
@@ -280,7 +282,7 @@
                 <span class="price">$1,599</span>
                 <span class="rating">4.8 &#9733;</span>
               </div>
-              <a class="btn btn--small btn--secondary" href="products.html">View Details</a>
+              <button class="btn btn--small btn--secondary" type="button">View Details</button>
             </div>
           </article>
         </div>
@@ -396,6 +398,8 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="weather.html">Weather</a></li>
+          <li><a href="todo.html">Tasks</a></li>
         </ul>
       </div>
 
@@ -431,13 +435,31 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M11 9l5 3-5 3V9Z" fill="currentColor"/></svg>
         </a>
       </div>
-      <p>&copy; 2026 TechNova. Built for the internship Task 1 UI foundation.</p>
+      <p>&copy; 2026 TechNova. Built for the internship.</p>
     </div>
   </footer>
+
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="quick-view-title" hidden data-product-modal>
+    <div class="modal__overlay" data-modal-close></div>
+    <article class="modal__panel" tabindex="-1">
+      <button class="modal__close" type="button" aria-label="Close quick view" data-modal-close>&times;</button>
+      <img class="modal__image" src="images/product-placeholder.svg" alt="" data-modal-image>
+      <div class="modal__content">
+        <span class="chip" data-modal-category>Category</span>
+        <h2 id="quick-view-title" data-modal-title>Product name</h2>
+        <p data-modal-description>Product description</p>
+        <div class="product-card__meta">
+          <span class="price" data-modal-price>$0</span>
+          <span class="rating" data-modal-rating>0.0 &#9733;</span>
+        </div>
+      </div>
+    </article>
+  </div>
 
   <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>&uarr;</button>
   <div class="toast-region" aria-live="polite" aria-atomic="true" data-toast-region></div>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/slider.js"></script>
+  <script type="module" src="js/modal.js"></script>
 </body>
 </html>

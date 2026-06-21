@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather | TechNova</title>
+  <meta name="description" content="Explore TechNova's premium Weather page with a polished search UI, forecast summary cards, and reusable static components.">
+  <meta name="keywords" content="TechNova Weather, weather dashboard, city search, premium UI">
+  <meta name="author" content="TechNova">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/weather.css">
+</head>
+<body class="weather-page">
+  <div class="page-loader" data-loader aria-label="Page loading">
+    <span class="loader-ring" aria-hidden="true"></span>
+  </div>
+
+  <header class="site-header" data-component="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="TechNova home">
+        <span class="brand__mark" aria-hidden="true">T</span>
+        <span class="brand__text">TechNova</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-component="primary-nav">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="products.html">Products</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+          <li><a class="nav__link is-active" href="weather.html" aria-current="page">Weather</a></li>
+          <li><a class="nav__link" href="todo.html">Tasks</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" data-theme-toggle>
+          <span class="theme-toggle__icon" aria-hidden="true">
+            <svg class="theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 12.8A8.6 8.6 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8Z" fill="currentColor"/>
+            </svg>
+            <svg class="theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="4" fill="currentColor"/>
+              <path d="M12 2.75v2.1M12 19.15v2.1M4.85 4.85l1.48 1.48M17.67 17.67l1.48 1.48M2.75 12h2.1M19.15 12h2.1M4.85 19.15l1.48-1.48M17.67 6.33l1.48-1.48" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+        <a class="icon-button" href="#" aria-label="Cart placeholder" data-action="open-cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6h15l-1.5 8.5a2 2 0 0 1-2 1.5H8.4a2 2 0 0 1-2-1.6L4.5 3.5H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="20" r="1.4" fill="currentColor"/>
+            <circle cx="17" cy="20" r="1.4" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="#" data-action="login">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main weather-main">
+    <section class="page-hero section section--tinted weather-hero" data-section="weather-hero">
+      <div class="container">
+        <div class="section-heading section-heading--center weather-hero__content">
+          <span class="eyebrow">Weather dashboard</span>
+          <h1>Check the forecast in a clean premium interface</h1>
+          <p>Search for any city, review the current conditions, and explore a reusable weather layout that is ready for future API integration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section weather-search-section" data-section="weather-search">
+      <div class="container weather-shell">
+        <article class="weather-search-card glass-card" aria-labelledby="weather-search-title">
+          <div class="weather-search-card__intro">
+            <span class="eyebrow">Search weather</span>
+            <h2 id="weather-search-title">Find a city forecast</h2>
+            <p>Enter a city name to prepare the workspace for live weather data. The structure is static for now, but the component hooks are ready for later API logic.</p>
+          </div>
+
+          <form class="weather-search-form" data-weather-form aria-label="Weather city search">
+            <div class="field weather-search-form__field">
+              <label for="weather-city">City</label>
+              <input id="weather-city" name="city" type="search" placeholder="Search by city name" autocomplete="address-level2" aria-describedby="weather-search-help">
+              <p id="weather-search-help" class="weather-search-help">Try a city like Rewari, Delhi, London, or Tokyo.</p>
+            </div>
+            <button class="btn btn--primary weather-search-form__submit" type="submit" aria-label="Search weather for the entered city">Search Weather</button>
+          </form>
+        </article>
+
+        <div class="weather-state-stack" aria-live="polite" aria-atomic="true">
+          <p class="weather-inline-msg" hidden data-weather-field-msg></p>
+
+          <article class="weather-result-card" hidden aria-labelledby="weather-result-title" data-weather-result>
+            <div class="weather-result-card__hero">
+              <div class="weather-result-card__summary">
+                <span class="chip">Current conditions</span>
+                <h2 id="weather-result-title" data-weather-city>City name</h2>
+                <p class="weather-result-card__description" data-weather-description>Weather description appears here.</p>
+                <div class="weather-result-card__temperature">
+                  <img class="weather-result-card__icon" data-weather-icon hidden alt="">
+                  <div class="weather-result-card__temperature-copy">
+                    <strong data-weather-temperature>--&deg;</strong>
+                    <span data-weather-feels-like>Feels like --&deg;</span>
+                  </div>
+                </div>
+                <p class="weather-result-card__meta" data-weather-updated>--</p>
+              </div>
+            </div>
+
+            <dl class="weather-metrics">
+              <div class="weather-metric-card">
+                <dt>Temperature</dt>
+                <dd data-weather-metric="temperature">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Feels Like</dt>
+                <dd data-weather-metric="feelsLike">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Humidity</dt>
+                <dd data-weather-metric="humidity">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Wind Speed</dt>
+                <dd data-weather-metric="windSpeed">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Pressure</dt>
+                <dd data-weather-metric="pressure">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Visibility</dt>
+                <dd data-weather-metric="visibility">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Sunrise</dt>
+                <dd data-weather-metric="sunrise">--</dd>
+              </div>
+              <div class="weather-metric-card">
+                <dt>Sunset</dt>
+                <dd data-weather-metric="sunset">--</dd>
+              </div>
+              <div class="weather-metric-card weather-metric-card--wide">
+                <dt>Weather Description</dt>
+                <dd data-weather-metric="description">--</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tinted weather-recent-section" data-section="weather-recent">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Recent searches</span>
+          <h2>Quick city shortcuts</h2>
+          <p>These chips keep the UI reusable and make it easy to expand into a richer search flow later.</p>
+        </div>
+
+        <ul class="weather-recent" aria-label="Recent weather searches">
+          <li><button class="weather-recent__chip" type="button" data-weather-recent data-city="Rewari" aria-label="Use recent search for Rewari">Rewari</button></li>
+          <li><button class="weather-recent__chip" type="button" data-weather-recent data-city="Delhi" aria-label="Use recent search for Delhi">Delhi</button></li>
+          <li><button class="weather-recent__chip" type="button" data-weather-recent data-city="Mumbai" aria-label="Use recent search for Mumbai">Mumbai</button></li>
+          <li><button class="weather-recent__chip" type="button" data-weather-recent data-city="London" aria-label="Use recent search for London">London</button></li>
+          <li><button class="weather-recent__chip" type="button" data-weather-recent data-city="Tokyo" aria-label="Use recent search for Tokyo">Tokyo</button></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-component="site-footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html" aria-label="TechNova home">
+          <span class="brand__mark" aria-hidden="true">T</span>
+          <span class="brand__text">TechNova</span>
+        </a>
+        <p>Premium smart electronics designed with a modern shopping experience in mind.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="weather.html">Weather</a></li>
+          <li><a href="todo.html">Tasks</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Support</h3>
+        <ul class="footer__links">
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Warranty</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <address>
+          Rewari, Haryana (123401)<br>
+          <a href="tel:+911234567890">+91 12345 67890</a><br>
+          <a href="mailto:hello@technova.com">hello@technova.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <div class="social-links" aria-label="Social links">
+        <a href="#" aria-label="TechNova on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TechNova on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4.6l4.1 5.7L18.4 4H21l-6.2 8.5L21 20h-4.6l-4.2-5.8L8 20H3.9l6.3-8.6L5 4Z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TechNova on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M11 9l5 3-5 3V9Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+      <p>&copy; 2026 TechNova. Built for the internship.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>&uarr;</button>
+  <div class="toast-region" aria-live="polite" aria-atomic="true" data-toast-region></div>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/weather.js"></script>
+</body>
+</html>

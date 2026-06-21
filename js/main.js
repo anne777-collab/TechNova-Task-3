@@ -142,17 +142,20 @@ const initSmoothScrolling = () => {
 };
 
 const initPlaceholderActions = () => {
+  const messageMap = {
+    "open-cart": "🚧 Cart feature is coming soon.",
+    login: "🚧 Login feature is coming soon."
+  };
+
   document.addEventListener("click", (event) => {
     const action = event.target.closest("[data-action]");
     if (!action) return;
 
-    event.preventDefault();
-    const messageMap = {
-      "open-cart": "🚧 Cart feature is coming soon.",
-      login: "🚧 Login feature is coming soon."
-    };
+    const message = messageMap[action.dataset.action];
+    if (!message) return;
 
-    showToast(messageMap[action.dataset.action] || "Feature coming soon.", "info");
+    event.preventDefault();
+    showToast(message, "info");
   });
 };
 

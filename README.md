@@ -10,6 +10,7 @@ This project delivers a polished 4-page website for a smart electronics store:
 - `products.html`
 - `about.html`
 - `contact.html`
+- `weather.html`
 
 The site is intentionally UI-only and uses only HTML5 and CSS3.
 Task 2 extends the UI with modular Vanilla JavaScript interactions.
@@ -22,6 +23,7 @@ technova/
 |-- products.html
 |-- about.html
 |-- contact.html
+|-- weather.html
 |-- css/
 |   |-- variables.css
 |   |-- style.css
@@ -47,6 +49,7 @@ technova/
 - Product catalog with static search, filter, sort, and pagination UI
 - About page with story, mission, vision, values, stats, and team section
 - Contact page with form, map iframe, business details, hours, and social links
+- Weather page with premium city search, result card scaffold, recent searches, and responsive metric cards
 - Accessible semantic HTML and meaningful alt text
 - Mobile-first responsive design
 - CSS variables, grid, flexbox, hover states, and glassmorphism accents
@@ -71,6 +74,11 @@ technova/
 3. Navigate through the pages using the header links.
 
 No build step and no JavaScript are required for Task 1.
+
+For the Weather page, set your OpenWeatherMap key before loading `js/weather.js`:
+
+- `window.TECHNOVA_OPENWEATHER_API_KEY = "your_api_key"`
+- or `localStorage.setItem("technova-openweather-api-key", "your_api_key")`
 
 ## Future Scope
 

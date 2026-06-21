@@ -1,5 +1,3 @@
-import { showToast } from "./main.js";
-
 const modal = document.querySelector("[data-product-modal]");
 const selectors = {
   image: "[data-modal-image]",
@@ -66,7 +64,6 @@ const openModal = (card) => {
   document.body.classList.add("modal-open");
   window.requestAnimationFrame(() => modal.classList.add("is-open"));
   modal.querySelector(".modal__panel").focus();
-  showToast("Quick view opened", "info");
 };
 
 const initModal = () => {

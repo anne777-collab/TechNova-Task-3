@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Tasks | TechNova</title>
+  <meta name="description" content="TechNova Smart Tasks is a premium todo workspace with task management, filtering, search, progress tracking, and localStorage persistence.">
+  <meta name="keywords" content="TechNova Smart Tasks, todo list, task manager, localStorage, productivity">
+  <meta name="author" content="TechNova">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/todo.css">
+</head>
+<body class="todo-page">
+  <div class="page-loader" data-loader aria-label="Page loading">
+    <span class="loader-ring" aria-hidden="true"></span>
+  </div>
+
+  <header class="site-header" data-component="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="TechNova home">
+        <span class="brand__mark" aria-hidden="true">T</span>
+        <span class="brand__text">TechNova</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-component="primary-nav">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="products.html">Products</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+          <li><a class="nav__link" href="weather.html">Weather</a></li>
+          <li><a class="nav__link is-active" href="todo.html" aria-current="page">Tasks</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" data-theme-toggle>
+          <span class="theme-toggle__icon" aria-hidden="true">
+            <svg class="theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none">
+              <path d="M21 12.8A8.6 8.6 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8Z" fill="currentColor"/>
+            </svg>
+            <svg class="theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="4" fill="currentColor"/>
+              <path d="M12 2.75v2.1M12 19.15v2.1M4.85 4.85l1.48 1.48M17.67 17.67l1.48 1.48M2.75 12h2.1M19.15 12h2.1M4.85 19.15l1.48-1.48M17.67 6.33l1.48-1.48" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+        <a class="icon-button" href="#" aria-label="Cart placeholder" data-action="open-cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6h15l-1.5 8.5a2 2 0 0 1-2 1.5H8.4a2 2 0 0 1-2-1.6L4.5 3.5H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="20" r="1.4" fill="currentColor"/>
+            <circle cx="17" cy="20" r="1.4" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="#" data-action="login">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main todo-main">
+    <section class="page-hero section section--tinted todo-hero" data-section="todo-hero">
+      <div class="container todo-hero__grid">
+        <div class="section-heading todo-hero__content">
+          <span class="eyebrow">Smart tasks</span>
+          <h1>Organize your day with a premium task workspace</h1>
+          <p>Track what matters, keep momentum visible, and manage your list with a clean interface that matches the TechNova design system.</p>
+        </div>
+
+        <div class="todo-hero__card glass-card" aria-label="Task workspace highlights">
+          <div class="todo-hero__highlight">
+            <span class="todo-hero__metric" data-task-total>0</span>
+            <span>Total tasks</span>
+          </div>
+          <div class="todo-hero__highlight">
+            <span class="todo-hero__metric" data-task-completed>0</span>
+            <span>Completed</span>
+          </div>
+          <div class="todo-hero__highlight">
+            <span class="todo-hero__metric" data-task-active>0</span>
+            <span>Active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section todo-section" data-section="todo-workspace">
+      <div class="container todo-layout">
+        <article class="todo-panel glass-card" aria-labelledby="todo-panel-title">
+          <div class="todo-panel__header">
+            <div>
+              <span class="eyebrow">Task board</span>
+              <h2 id="todo-panel-title">Build, filter, and finish tasks</h2>
+              <p>Everything is saved locally so your tasks return after refresh.</p>
+            </div>
+            <div class="todo-counter" aria-live="polite">
+              <strong data-task-counter>0 tasks left</strong>
+              <span data-task-subcounter>0 of 0 completed</span>
+            </div>
+          </div>
+
+          <form class="todo-form" data-todo-form aria-label="Add new task">
+            <div class="field todo-form__field">
+              <label for="todo-input">Task</label>
+              <input id="todo-input" name="task" type="text" placeholder="Add a new smart task" autocomplete="off" maxlength="120" data-task-input>
+            </div>
+            <button class="btn btn--primary todo-form__submit" type="submit">Add Task</button>
+          </form>
+
+          <div class="todo-toolbar">
+            <div class="field todo-toolbar__search">
+              <label for="todo-search">Search tasks</label>
+              <input id="todo-search" name="search" type="search" placeholder="Search by task title" autocomplete="off" data-task-search>
+            </div>
+
+            <div class="todo-filters" role="tablist" aria-label="Filter tasks">
+              <button class="todo-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="todo-filter" type="button" data-filter="active" aria-pressed="false">Active</button>
+              <button class="todo-filter" type="button" data-filter="completed" aria-pressed="false">Completed</button>
+            </div>
+
+            <div class="todo-actions">
+              <button class="btn btn--secondary btn--small" type="button" data-mark-all-complete>Mark All Complete</button>
+              <button class="btn btn--secondary btn--small" type="button" data-clear-completed>Clear Completed</button>
+            </div>
+          </div>
+
+          <div class="todo-progress" aria-labelledby="todo-progress-title">
+            <div class="todo-progress__header">
+              <div>
+                <span class="eyebrow">Progress</span>
+                <h3 id="todo-progress-title">Task completion</h3>
+              </div>
+              <strong data-progress-text>0%</strong>
+            </div>
+            <div class="todo-progress__track" aria-hidden="true">
+              <span class="todo-progress__bar" data-progress-bar></span>
+            </div>
+          </div>
+
+          <div class="todo-status" aria-live="polite">
+            <p data-task-status>Start by adding a task to your list.</p>
+          </div>
+
+          <div class="todo-list-wrap">
+            <ul class="todo-list" data-task-list aria-label="Task list"></ul>
+
+            <section class="todo-empty-state" data-empty-state hidden aria-labelledby="empty-state-title">
+              <div class="todo-empty-state__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 4h8l3 3v13H5V4h3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M8 11h8M8 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 id="empty-state-title">No tasks yet</h3>
+              <p data-empty-message>Your smart task list will appear here once you start adding items.</p>
+            </section>
+          </div>
+        </article>
+
+        <aside class="todo-sidebar">
+          <article class="todo-note glass-card">
+            <span class="eyebrow">How it works</span>
+            <h2>Simple controls, premium feel</h2>
+            <ul class="todo-note__list">
+              <li>Add tasks from the input at the top.</li>
+              <li>Use search and filters to narrow your view.</li>
+              <li>Edit, complete, or delete individual items.</li>
+              <li>Progress updates automatically as tasks change.</li>
+            </ul>
+          </article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-component="site-footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html" aria-label="TechNova home">
+          <span class="brand__mark" aria-hidden="true">T</span>
+          <span class="brand__text">TechNova</span>
+        </a>
+        <p>Premium smart electronics designed with a modern shopping experience in mind.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="weather.html">Weather</a></li>
+          <li><a href="todo.html">Tasks</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Support</h3>
+        <ul class="footer__links">
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Warranty</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <address>
+          Rewari, Haryana (123401)<br>
+          <a href="tel:+911234567890">+91 12345 67890</a><br>
+          <a href="mailto:hello@technova.com">hello@technova.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <div class="social-links" aria-label="Social links">
+        <a href="#" aria-label="TechNova on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TechNova on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4.6l4.1 5.7L18.4 4H21l-6.2 8.5L21 20h-4.6l-4.2-5.8L8 20H3.9l6.3-8.6L5 4Z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TechNova on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M11 9l5 3-5 3V9Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+      <p>&copy; 2026 TechNova. Built for the internship.</p>
+    </div>
+  </footer>
+
+  <div class="modal todo-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="clear-completed-title" aria-describedby="clear-completed-message" hidden data-clear-completed-modal>
+    <div class="modal__overlay" data-clear-completed-cancel></div>
+    <article class="modal__panel todo-confirm-modal__panel" tabindex="-1">
+      <button class="modal__close" type="button" aria-label="Close confirmation dialog" data-clear-completed-cancel>&times;</button>
+      <div class="todo-confirm-modal__content">
+        <div class="todo-confirm-modal__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3 2.8 19h18.4L12 3Z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M12 9v4M12 16h.01" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="todo-confirm-modal__body">
+          <span class="eyebrow">Smart tasks</span>
+          <h2 id="clear-completed-title">Remove Completed Tasks?</h2>
+          <p id="clear-completed-message">This will permanently delete all completed tasks. This action cannot be undone.</p>
+          <div class="todo-confirm-modal__actions">
+            <button class="btn btn--secondary" type="button" data-clear-completed-cancel>Cancel</button>
+            <button class="btn btn--primary" type="button" data-clear-completed-confirm>Delete</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>&uarr;</button>
+  <div class="toast-region" aria-live="polite" aria-atomic="true" data-toast-region></div>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/todo.js"></script>
+</body>
+</html>
